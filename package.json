@@ -1,0 +1,36 @@
+{
+  "name": "tasklist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client.js",
+  "scripts": {
+    "clean": "rm -rf lib",
+    "build": "babel --watch src -s --out-dir lib",
+    "wp": "./node_modules/.bin/webpack --watch",
+    "srv": "http-server --watch -c-1 -p 8010"
+  },
+  "babel": {
+    "presets": [
+      "es2017",
+      "react",
+      "stage-2"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-preset-es2017": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "http-server": "^0.9.0"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "redux": "^3.6.0",
+    "webpack": "^2.2.1"
+  }
+}
