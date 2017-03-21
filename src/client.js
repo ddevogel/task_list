@@ -1,9 +1,8 @@
-import {createStore} from 'redux'
-import * as ReactDOM from 'react-domq'
-import {reducers} from './reducer/reducers.js'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-const store = createStore(reducers)
+import Layout from './components/Layout'
 
-store.subscribe(() => {
-    console.log("store change", store.getState())
-})
+const app = document.getElementById('app')
+
+ReactDOM.render(<Layout/>, app)

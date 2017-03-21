@@ -1,32 +1,33 @@
-let tasks = []
-export const taskReducer = (state={},action) => {
+export default function reducer(state={
+    user: {
+        id: null,
+        name: null,
+        tasks: [],
+        finished: []
+    },
+    error: null
+}, action) {
     switch(action.type) {
-        case "INIT":
-            state = {...state, taskList: [], finishedTasks: []}
-            break
-        case "ADD_TASK":
-            let addTasks = [...state.taskList]
-            if(addTasks.length > 0) {
+        case 'INIT':
+            return {
+                ...state,
+                state.user.id: action.payload[0],
+                state.user.name: action.payload[1]
+            }
+        case 'ADD_TASK':
+            let addTasks = [...state.user.tasks]
+            if(addTasks.length) {
                 addTasks.push(action.payload)
             } else {
                 addTasks = [action.payload]
             }
-            state = {...state, taskList: addTasks}
-            break
-        case "REMOVE_TASK":
-            let index = state.taskList.indexOf(action.payload)
-            let newTasks = state.taskList.slice()
-            newTasks.splice(index, 1)
-            //delete newTasks[index]
-            state = {...state, taskList: newTasks}
-            break
-        case "FINISH_TASK":
-            let unfinished = [...state.taskList]
-            let finishedIndex = unfinished.indexOf(action.payload)
-            let finished = [...state.finishedTasks].concat(unfinished[finishedIndex])
-            unfinished.splice(finishedIndex, 1)
-            state = {...state, taskList: unfinished, finishedTasks: finished}
-            break
+            return {...state, tasks: addTasks}
+        case 'FINISH_TASK':
+            let incomp = [...state.tasks]
+            let finIndex = incomp.indexOf(action.payload)
+            let done = [...state.finished].concat(incomp[finIndex])
+            incomp.splice(finIndex, 1)
+            return {...state, tasks: incomp, finished: done}
     }
     return state
 }
