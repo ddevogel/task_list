@@ -1,32 +1,41 @@
-let tasks = []
-export const taskReducer = (state={},action) => {
+export default function reducer(state={
+    tasks: [],
+    finished: [],
+}, action) {
+    let newTasks = null
+    let index = null
     switch(action.type) {
-        case "INIT":
-            state = {...state, taskList: [], finishedTasks: []}
-            break
-        case "ADD_TASK":
-            let addTasks = [...state.taskList]
-            if(addTasks.length > 0) {
-                addTasks.push(action.payload)
+        case 'ADD_TASK':
+            newTasks = [...state.tasks]
+            if(newTasks.length) {
+                newTasks.push(action.payload)
             } else {
-                addTasks = [action.payload]
+                newTasks = [action.payload]
             }
-            state = {...state, taskList: addTasks}
-            break
-        case "REMOVE_TASK":
-            let index = state.taskList.indexOf(action.payload)
-            let newTasks = state.taskList.slice()
+
+            return {
+                ...state,
+                tasks: newTasks
+            }
+        case 'DELETE_TASK':
+            index = state.tasks.indexOf(action.payload)
+            newTasks = state.taskList.slice()
             newTasks.splice(index, 1)
-            //delete newTasks[index]
-            state = {...state, taskList: newTasks}
-            break
-        case "FINISH_TASK":
-            let unfinished = [...state.taskList]
-            let finishedIndex = unfinished.indexOf(action.payload)
-            let finished = [...state.finishedTasks].concat(unfinished[finishedIndex])
-            unfinished.splice(finishedIndex, 1)
-            state = {...state, taskList: unfinished, finishedTasks: finished}
-            break
+
+            return {
+                ...state,
+                tasks: newTasks
+            }
+        case 'COMPLETE_TASK':
+            let unfinished = [...state.tasks]
+            index = state.tasks.indexOf(action.payload)
+            newTasks = [...state.finished].concat(unfinished[index])
+            unfinished.splice(index, 1)
+            
+            return {
+                ...state,
+                tasks: unfinished,
+                finished: newTasks
+            }
     }
-    return state
 }
