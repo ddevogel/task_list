@@ -5,8 +5,6 @@ export default function reducer(state={
     let newTasks = null
     let index = null
     switch(action.type) {
-        case 'INIT':
-            return {...state, tasks: [], finished: []}
         case 'ADD_TASK':
             newTasks = [...state.tasks]
             if(newTasks.length) {

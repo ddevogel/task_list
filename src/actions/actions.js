@@ -18,9 +18,3 @@ export function completeTask(taskName) {
         payload: taskName
     }
 }
-
-export function init() {
-    return {
-        type: 'INIT'
-    }
-}
