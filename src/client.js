@@ -7,8 +7,6 @@ import store from './store'
 
 const app = document.getElementById('app')
 
-//store.dispatch({type:'INIT'})
-
 ReactDOM.render(
     <Provider store={store}>
         <Layout />
