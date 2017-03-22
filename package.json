@@ -7,7 +7,8 @@
     "clean": "rm -rf lib",
     "build": "babel --watch src -s --out-dir lib",
     "wp": "./node_modules/.bin/webpack --watch",
-    "srv": "http-server --watch -c-1 -p 8010"
+    "srv": "http-server --watch -c-1 -p 8010",
+    "dev": "./node_modules/.bin/webpack-dev-server --content-base src --inline --hot --watch"
   },
   "babel": {
     "presets": [
@@ -15,7 +16,9 @@
       "react",
       "stage-2"
     ],
-    "plugins": ["babel-plugin-transform-decorators-legacy"]
+    "plugins": [
+      "babel-plugin-transform-decorators-legacy"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -23,11 +26,13 @@
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2017": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-2": "^6.22.0",
-    "http-server": "^0.9.0"
+    "http-server": "^0.9.0",
+    "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
     "react": "^15.4.2",

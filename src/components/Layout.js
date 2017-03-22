@@ -22,9 +22,9 @@ export default class Layout extends React.Component {
 
         return (
             <div>
-                <h3>Tasks</h3>
+                <p>Tasks</p>
                 <ul>{mapTasks}</ul>
-                <h3>Finished</h3>
+                <p>Finished</p>
                 <ul>{mapFinished}</ul>
             </div>
         )

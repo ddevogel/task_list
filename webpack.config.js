@@ -4,10 +4,23 @@ var webpack = require('webpack');
 module.exports = {
   context: __dirname,
   devtool: debug ? "inline-sourcemap" : null,
-  entry: "./lib/client.js",
+  entry: "./src/client.js",
+  module: {
+      loaders: [
+          {
+              test: /\.js?$/,
+              exclude: /(node_modules|bower_components)/,
+              loader: 'babel-loader',
+              query: {
+                  presets: ['react', 'es2017', 'stage-2'],
+                  plugins: ['transform-decorators-legacy']
+              }
+          }
+      ]
+  },
   output: {
-    path: __dirname + "/lib",
-    filename: "main.js"
+    path: __dirname + '/src',
+    filename: "client.min.js"
   },
   plugins: debug ? [] : [
     new webpack.optimize.DedupePlugin(),
