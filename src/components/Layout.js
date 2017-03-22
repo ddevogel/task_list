@@ -21,10 +21,12 @@ export default class Layout extends React.Component {
         const mappedTasks = tasks.user.tasks.map(task => <li>{task}</li>)
         const mappedFinished = tasks.user.finished.map(finished => <li>{finished}</li>)
 
-        return <div>
-            <h1>{user.name}</h1>
-            <ol>{mappedTasks}</ol>
-            <ol>{mappedFinished}</ol>
-        </div>
+        return (
+            <div>
+                <h1>{user.name}</h1>
+                <ol>{mappedTasks}</ol>
+                <ol>{mappedFinished}</ol>
+            </div>
+        )
     }
 }
