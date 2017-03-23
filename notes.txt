@@ -1,0 +1,7 @@
+export default connect(state => Object.assign({},
+    state.appReducer,
+    state.bookmarkReducer,
+    state.notesReducer,
+    state.searchReducer,
+    state.userPermissionsReducer
+), Object.assign({}, actions, appAlertActions, bookmarkActions, searchActions, {push, goBack, refreshUserAttributes, getAnalystList}))(withRouter(NoteView))
