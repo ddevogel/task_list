@@ -22,6 +22,14 @@ export default class Layout extends React.Component {
                 <ul>{mapTasks}</ul>
                 <p>Finished</p>
                 <ul>{mapFinished}</ul>
+                <div id="buttons">
+                    <input type="text" id="addBox" />
+                    <input type="submit" value="Add Task" /><br/>
+                    <input type="text" id="finishBox" />
+                    <input type="submit" value="Complete Task" /><br/>
+                    <input type="text" id="deleteBox" />
+                    <input type="submit" value="Delete Task" /><br/>
+                </div>
             </div>
         )
     }
